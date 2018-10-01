@@ -14,5 +14,26 @@ I was really interested in trying how good CycleGAN translate. I started with th
 
 Then I thought, perhpas the model implemented by tensorflow could be faster.
 
+After trying out few libraries, I ended up with [this one](https://github.com/architrathore/CycleGAN), because it's easy to understand and easy to change the code. For dataset, I wanted to do a selfie to cartoon translation.
+
+I downloaded selfies from [here](http://crcv.ucf.edu/data/Selfie/).
+I downloaded bitmoji like cartoon faces from [here](https://google.github.io/cartoonset/). These are used in Google Allo.
+
+Then I changed the dataset paths to these 2 folders (I only used a few hundred from each data set, but even that turns out to be huge amount of work for training...).
+
+There were some minor glitches in the codebase at the beginning. 
+1. I needed to change this line "init = tf.global_variables_initializer()" to "init=(tf.global_variables_initializer(),tf.local_variables_initializer())".
+
+2. There's one line "image_tensor.size() == img_size*batch_size*img_layer". Took me a while for me to figure out that size is an attribute of numpy array, not a function. So changing "image_tensor.size()" to "image_tensor.size" fixed the problem.
+
+3. The cartoon images were in png. I changed the code from decode_jped to decode_png but didn't seem to work. So converted all png to jpeg with Preview.
+
+Then finally it started running on my local laptop. And this time I see intermediate fake images generated. 
+
+Bad news is that, after about 1.5 days of training, it still only finished 10 epoches with 100 images (the code had 100 max epoches), so it's only 10% done after 1.5 days. The next step should be to have it running on some Cloud service like Google Cloud or AWS. Preferbaly running on Google Cloud with TPU support. Perhaps that can turn days of work to hours.
+
+Running the model training code on Cloud will be the next thing to try.
+
+But we can take a look how the fake images generated have involved in the first 10 epoches by the following image.
 
 
