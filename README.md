@@ -39,4 +39,6 @@ Running the model training code on Cloud will be the next thing to try.
 
 But we can take a look how the fake images generated have involved in the first 10 epoches by the following image.
 
+![FakeA](images/fakeA.png)
 
+![FakeB](images/fakeB.png)
