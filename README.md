@@ -42,3 +42,6 @@ But we can take a look how the fake images generated have involved in the first 
 ![FakeA](images/fakeA.png)
 
 ![FakeB](images/fakeB.png)
+
+It seems that it's still quite far away from satisfactory work.
+The most promising way forward will be use more data (right now only uses 100 images for each folder) and run it on a TPU machine.
